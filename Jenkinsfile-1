@@ -1,0 +1,25 @@
+pipeline
+{
+    agent any
+    stages {
+        stage('Build') {
+            steps{
+                echo "Building the Code.........."
+                bat "npm install"
+                bat "npm run build"
+            }
+        }
+        stage('Unit Test') {
+            steps {
+                echo "Unit Tests"
+                bat "npm run test:coverage"
+            }
+        }
+        stage('Playwright') {
+            steps {
+                echo "Playwright"
+                bat "npx playwright test"
+            }
+        }
+    }
+}

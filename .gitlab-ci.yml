@@ -1,0 +1,16 @@
+image: node:16.15.0
+
+stages:
+    - build
+
+cache:
+    paths:
+        - node_modules/
+
+build:
+    stage: build
+    artifacts:
+        untracked: true
+    script:
+        - npm install
+        - npm run build
